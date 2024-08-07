@@ -53,8 +53,8 @@ pipeline {
     stage('Deploy to Dev Server') {
             steps {
                     sh """
-                    ls -al
-                    scp -r ./* ./.??* ubuntu@35.154.130.173:/home/ubuntu/aws-microservices/
+                    ls
+                    scp -r ./* ubuntu@35.154.130.173:/home/ubuntu/aws-microservices/
                     ssh ubuntu@35.154.130.173 -C "
                     source ~/.nvm/nvm.sh && \
                     nvm use node && \
