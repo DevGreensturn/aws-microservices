@@ -41,10 +41,10 @@ app.get("/", (req, res) => {
 
 app.get("/health", (req, res) => {
   try {
-    return res.status(200).send({ status: true, message: `AWS CI-CD is running fine at ${port}`});
+    return res.status(200).send({ status: true, message: `AWS CI--CD is running fine at ${port}`});
 
   } catch (error) {
-    return res.status(500).send({ status: false, message: `AWS CI-CD down right now at ${port}.` });
+    return res.status(500).send({ status: false, message: `AWS CI--CD down right now at ${port}.` });
   }
 });
 
