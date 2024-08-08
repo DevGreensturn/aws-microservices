@@ -12,7 +12,10 @@ const s3 = new AWS.S3();
 
 const s3Upload = async (folderName = 'metadata', name = `${uuidv4()}.json`, buffer, ContentType) => {
     if (!buffer) {
-        throw new Error('File Body is Required');
+        //throw new Error('File Body is Required');
+        return res
+        .status(400)
+        .send({ message:"File is required", data: {}, statue: false });
     }
 
     const key = `${folderName}/${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}_${name}`;
