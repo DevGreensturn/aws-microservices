@@ -20,16 +20,22 @@ app.use(cors({
   origin: '*'
 }));
 
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "*"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, x-access-token"
-  );
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,OPTIONS");
+// app.use(function (req, res, next) {
+//   res.header(
+//     "Access-Control-Allow-Origin",
+//     "*"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, x-access-token"
+//   );
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,OPTIONS");
+//   next();
+// });
+app.use((error, req, res, next) => {
+  if (error instanceof SyntaxError) {
+    return res.status(400).send({ status: 400, success: false, message: 'Bad request.', error });
+  }
   next();
 });
 
