@@ -12,7 +12,9 @@ router.post("/:foldername", upload.any(), async (req, res) => {
     try {
   
       if (!req.files) {
-        throw new Error('Image Is required');
+        return res
+        .status(400)
+        .send({ message:"File is required", data: {}, statue: false });
       }
   
       let fileNameExist = req.body || {};
