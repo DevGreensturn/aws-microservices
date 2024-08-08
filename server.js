@@ -6,6 +6,12 @@ const bp = require('body-parser');
 const cors = require('cors');
 
 const port = process.env.AWS_MS_PORT || 3003;
+app.use(bp.json({limit:'100mb'}));
+
+app.use(bp.urlencoded({
+  extended: true,
+  limit: '100mb'
+}));
 
 // CORS middleware to allow all origins
 app.use(cors({
