@@ -19,10 +19,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS','PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-app.use(bp.json({ limit: '100mb' }));
-app.use(bp.urlencoded({ extended: true, limit: '100mb' }));
-
 // Routes
 app.use('/v1', require("./router/s3.js"));
 
